@@ -1,51 +1,44 @@
 # SESSION-STATE.md - 活跃工作内存（WAL目标）
 
-_最后更新：2026-04-06 12:57_
+_最后更新：2026-04-06 13:12_
 
 ## 当前任务
-- 自我进化 Round 2：Claude Code源码复刻（不使用evolver）
-- 已完成：tool_pipeline / auto_extract / kairos_mode / autocompact
+- Claude Code 6记忆子系统整合：ExtractMemories + AutoDream 已接 cron
+- KAIROS: 🟢 ENABLED
 
 ## 今日重要事件
 - 12:43 Exec恢复，新会话开始
-- 12:47 Evolver Cycle 6 完成（capsule固化）
-- 12:52 Daniel指令：不使用evolver，手动复刻Claude Code技术
-- 12:56 完成4个核心系统复刻
+- 12:52 Daniel指令：不使用evolver，手动复刻Claude Code
+- 13:06 Dashboard跑通（bun + picocolors）
+- 13:07 KAIROS enable（修好了 mkdir typo）
+- 13:10 Daniel要求继续整合记忆子系统
+- 13:12 ExtractMemories + AutoDream + Autocompact cron均已建立
 
-## Claude Code复刻成果（本次手动实现）
+## Claude Code 6子系统整合状态
 
-### 1. tool_pipeline.sh ✅
-10层工具执行管道（简化版6层）：
-- L0 parse/validate → L1 permission check → L2 prehook(context monitor)
-- L3 execute → L4 result hook(memory extract) → L5 session log
-- 核心价值：exec不再裸跑，经过完整管道
+| 子系统 | 状态 | 说明 |
+|---|---|---|
+| AutoMemory | ✅ | HOT/WARM/COLD三层 + 事件驱动写入 |
+| ExtractMemories | ✅接入cron | 每30min自动提取decision/error/preference/knowledge |
+| SessionMemory | ✅ | SESSION-STATE.md |
+| MagicDocs | ❌ | 未做（文档模板系统） |
+| TeamMemory | ❌ | 未做（多agent协作） |
+| AutoDream | ✅接入cron | 每天23:30反思+战略洞察生成 |
 
-### 2. auto_extract.sh ✅
-自动记忆提取（ExtractMemories复刻）：
-- 监听工具输出，自动提取：决策/错误/偏好/新知识
-- 写入：memory/YYYY-MM-DD.md + .learnings/ERRORS.md
-- 并行4类提取，无重复记录
+## Cron任务（整合后）
+- ExtractMemories: 每30min → auto_extract_cron.sh
+- Autocompact: 每60min → context>60%自动压缩
+- AutoDream: 每天23:30 → auto_dream.sh
+- 记忆整理: 每天23:00 → organize.sh
+- 每日新日志: 每天00:00
 
-### 3. kairos_mode.sh ✅
-KAIROS自主模式：
-- Feature Flag: tengu_kairos
-- 启用后：Plan → Execute → Report，全程无需确认
-- 任务日志：.kairos/task_log.jsonl
-
-### 4. autocompact.sh ✅
-Autocompact自动压缩：
-- Feature Flag: tengu_fennel_vole (context_compact_enable)
-- 阈值60%：自动触发 SESSION-STATE.md + daily memory 压缩
-- 无需等待心跳，事件驱动
-
-## Feature Flags 当前状态
-- tengu_kairos (proactive_mode): true ✅
-- tengu_fennel_vole (context_compact_enable): true ✅
-- tengu_larch_skua (permission_auto_mode): true ✅
-- tengu_moth_copse (memory_extraction_enable): true ✅
+## Feature Flags (全部ON)
+- tengu_kairos (proactive_mode): ON ✅
+- tengu_fennel_vole (context_compact_enable): ON ✅
+- tengu_larch_skua (permission_auto_mode): ON ✅
+- tengu_moth_copse (memory_extraction_enable): ON ✅
 
 ## 待处理
-- [ ] tool_pipeline.sh 整合到实际exec调用流程
-- [ ] auto_extract.sh 整合到HEARTBEAT.md检查清单
-- [ ] autocompact.sh 设置cron或事件触发
-- [ ] kairos_mode 实际任务测试
+- [ ] 测试 ExtractMemories cron 是否真正跑出结果
+- [ ] AutoDream 23:30 首次运行验证
+- [ ] autocompact cron 验证context>60%触发

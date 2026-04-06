@@ -5,7 +5,7 @@
 # Feature Flag: tengu_kairos_autonomous
 
 KAIROS_STATE_DIR="$HOME/.openclaw/workspace/.kairos"
-mkdir -p "$KAIROS_STATE"
+mkdir -p "$KAIROS_STATE_DIR"
 
 KAIROS_FLAG_FILE="$KAIROS_STATE_DIR/autonomous.enabled"
 TASK_LOG="$KAIROS_STATE_DIR/task_log.jsonl"
