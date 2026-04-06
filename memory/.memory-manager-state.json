@@ -1,0 +1,14 @@
+{
+  "initialized": true,
+  "version": "1.0.0",
+  "last_check": "2026-04-06T04:18:00Z",
+  "last_snapshot": "2026-04-05T11:55:38Z",
+  "last_organize": "2026-04-05T16:12:02Z",
+  "warnings": 4,
+  "stats": {
+    "episodic_count": 0,
+    "semantic_count": 0,
+    "procedural_count": 0,
+    "snapshots_count": 0
+  }
+}

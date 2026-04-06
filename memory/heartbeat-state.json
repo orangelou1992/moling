@@ -1,0 +1,15 @@
+{
+  "lastChecks": {
+    "email": null,
+    "calendar": null,
+    "weather": null,
+    "memory_health": 1743895200
+  },
+  "memory_health": {
+    "episodic_pct": 45,
+    "semantic_pct": 49,
+    "procedural_pct": 4,
+    "context_usage_pct": 2,
+    "status": "good"
+  }
+}

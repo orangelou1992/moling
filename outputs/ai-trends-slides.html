@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Agent 2026</title>
+  <script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/tailwindcss/3.0.23/tailwind.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Noto Sans SC', sans-serif; background: #000; color: #fff; overflow: hidden; }
+    .slides-container { width: 100vw; height: 100vh; display: flex; align-items: center; justify-content: center; }
+    .slide { width: 100%; height: 100%; position: absolute; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; opacity: 0; transform: translateX(100%); transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); background: linear-gradient(180deg, #0a0a0a 0%, #000 100%); }
+    .slide.active { opacity: 1; transform: translateX(0); }
+    .slide.prev { opacity: 0; transform: translateX(-100%); }
+    .light-spot { position: absolute; border-radius: 50%; filter: blur(100px); opacity: 0.2; pointer-events: none; }
+    .light-spot-1 { width: 400px; height: 400px; background: #6366f1; top: -100px; right: -100px; }
+    .light-spot-2 { width: 300px; height: 300px; background: #8b5cf6; bottom: -50px; left: -50px; }
+    .slide-num { position: absolute; bottom: 2rem; right: 2rem; font-size: 0.875rem; color: #6b7280; }
+  </style>
+</head>
+<body>
+<div class="slides-container">
+  <div class="slide active" id="slide-1">
+    <div class="light-spot light-spot-1"></div>
+    <div class="light-spot light-spot-2"></div>
+    <div class="text-center z-10">
+      <div class="text-6xl font-black mb-4">2026</div>
+      <div class="text-2xl font-bold text-indigo-400">AI Agent</div>
+      <div class="text-xl text-gray-400 mt-2">年度进展报告</div>
+    </div>
+    <div class="slide-num">01</div>
+  </div>
+
+  <div class="slide" id="slide-2">
+    <div class="light-spot light-spot-1"></div>
+    <div class="w-full max-w-sm z-10">
+      <div class="text-4xl font-black mb-6 text-indigo-400">MCP</div>
+      <div class="text-lg font-bold mb-2">Model Context Protocol</div>
+      <div class="text-gray-400 text-sm leading-relaxed">正在成为AI Agent标准接口<br/>Microsoft · Google · FastAPI 全面支持</div>
+      <div class="mt-6 text-3xl font-black text-white">一统工具生态</div>
+    </div>
+    <div class="slide-num">02</div>
+  </div>
+
+  <div class="slide" id="slide-3">
+    <div class="light-spot light-spot-2"></div>
+    <div class="w-full max-w-sm z-10">
+      <div class="text-4xl font-black mb-6 text-purple-400">CrewAI</div>
+      <div class="text-lg font-bold mb-2">多代理协作框架</div>
+      <div class="text-gray-400 text-sm leading-relaxed mb-6">48,000 Stars<br/>角色 + 任务分解模式</div>
+      <div class="text-2xl font-black text-white">Crews</div>
+      <div class="text-gray-500 text-sm mt-1">多代理协作</div>
+      <div class="text-2xl font-black mt-4 text-white">Flows</div>
+      <div class="text-gray-500 text-sm mt-1">事件驱动编排</div>
+    </div>
+    <div class="slide-num">03</div>
+  </div>
+
+  <div class="slide" id="slide-4">
+    <div class="light-spot light-spot-1"></div>
+    <div class="w-full max-w-sm z-10">
+      <div class="text-4xl font-black mb-6 text-emerald-400">OpenCUA</div>
+      <div class="text-lg font-bold mb-2">GUI Agent 新方向</div>
+      <div class="text-gray-400 text-sm leading-relaxed mb-4">让AI直接操作计算机<br/>3系统 · 200+应用</div>
+      <div class="text-5xl font-black text-white">45%</div>
+      <div class="text-gray-400 text-sm mt-1">OSWorld-Verified SOTA</div>
+    </div>
+    <div class="slide-num">04</div>
+  </div>
+
+  <div class="slide" id="slide-5">
+    <div class="light-spot light-spot-2"></div>
+    <div class="w-full max-w-sm z-10 text-center">
+      <div class="text-4xl font-black mb-6">未来趋势</div>
+      <div class="text-left space-y-4">
+        <div class="text-lg font-bold text-indigo-300">MCP → 标准接口</div>
+        <div class="text-lg font-bold text-purple-300">多Agent协作</div>
+        <div class="text-lg font-bold text-emerald-300">GUI Agent崛起</div>
+      </div>
+      <div class="text-2xl font-black mt-8 text-white">墨瞳</div>
+      <div class="text-gray-500 text-sm mt-1">持续学习 · 主动进化</div>
+    </div>
+    <div class="slide-num">05</div>
+  </div>
+</div>
+
+<script>
+let current = 0;
+const slides = document.querySelectorAll('.slide');
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowDown' || e.key === ' ' || e.key === 'PageDown') {
+    slides[current].classList.remove('active');
+    slides[current].classList.add('prev');
+    current = (current + 1) % slides.length;
+    slides[current].classList.remove('prev');
+    slides[current].classList.add('active');
+  }
+});
+document.addEventListener('click', () => {
+  slides[current].classList.remove('active');
+  slides[current].classList.add('prev');
+  current = (current + 1) % slides.length;
+  slides[current].classList.remove('prev');
+  slides[current].classList.add('active');
+});
+</script>
+</body>
+</html>

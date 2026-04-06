@@ -1,0 +1,17 @@
+{"id":"p_001","entity_type":"Person","name":"Daniel","alias":"娄焱昭","device":"Lenovo X1 Carbon","timezone":"Asia/Shanghai","relation":"主人","created_at":"2026-04-06T07:52:00+08:00"}
+{"id":"p_002","entity_type":"Person","name":"刘淑平","alias":"刘姐","relation":"阿姨/保姆","context":"帮Daniel带孩子","created_at":"2026-04-06T07:52:00+08:00"}
+{"id":"p_003","entity_type":"Person","name":"晓楼","relation":"微信联系人","created_at":"2026-04-06T07:52:00+08:00"}
+{"from":"p_001","rel":"knows","to":"p_002","created_at":"2026-04-06T07:52:00+08:00"}
+{"from":"p_001","rel":"knows","to":"p_003","created_at":"2026-04-06T07:52:00+08:00"}
+{"id":"t_001","entity_type":"Technology","name":"crewAI","stars":"48000","category":"Multi-Agent Orchestration","created_at":"2026-04-06T08:30:00+08:00"}
+{"id":"t_002","entity_type":"Technology","name":"MCP","full_name":"Model Context Protocol","category":"Agent Interface Protocol","created_at":"2026-04-06T08:30:00+08:00"}
+{"id":"t_003","entity_type":"Technology","name":"OpenCUA","category":"GUI Agent","note":"OSWorld-Verified 45% SOTA","created_at":"2026-04-06T08:30:00+08:00"}
+{"id":"t_004","entity_type":"Technology","name":"OpenAI Swarm","category":"Multi-Agent Orchestration","created_at":"2026-04-06T08:30:00+08:00"}
+{"id":"a_001","entity_type":"AITrend","name":"MCP正在成为标准","context":"Microsoft/Google/FastAPI都在支持","created_at":"2026-04-06T08:30:00+08:00"}
+{"id":"a_002","entity_type":"AITrend","name":"GUI Agent新方向","context":"视觉-语言-动作模型","created_at":"2026-04-06T08:30:00+08:00"}
+{"id":"a_003","entity_type":"AITrend","name":"Multi-Agent编排","context":"crewAI模式：角色+任务分解","created_at":"2026-04-06T08:30:00+08:00"}
+{"from":"t_002","rel":"inspired_by","to":"a_001","created_at":"2026-04-06T08:30:00+08:00"}
+{"from":"t_003","rel":"enables","to":"a_002","created_at":"2026-04-06T08:30:00+08:00"}
+{"from":"t_001","rel":"implements","to":"a_003","created_at":"2026-04-06T08:30:00+08:00"}
+{"from":"t_004","rel":"similar_to","to":"t_001","created_at":"2026-04-06T08:30:00+08:00"}
+{"from":"a_001","rel":"related_to","to":"a_003","created_at":"2026-04-06T08:30:00+08:00"}

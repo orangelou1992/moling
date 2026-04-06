@@ -1,0 +1,203 @@
+{
+  "version": 1,
+  "skills": {
+    "self-improving-agent": {
+      "name": "self-improving-agent",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=self-improving-agent",
+      "source": "skillhub",
+      "version": "1.0.11"
+    },
+    "agent-browser": {
+      "name": "Agent Browser",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=agent-browser",
+      "source": "skillhub",
+      "version": "0.2.0"
+    },
+    "find-skills": {
+      "name": "Find Skills",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=find-skills",
+      "source": "skillhub",
+      "version": "0.1.0"
+    },
+    "summarize": {
+      "name": "Summarize",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=summarize",
+      "source": "skillhub",
+      "version": "1.0.0"
+    },
+    "ontology": {
+      "name": "Ontology",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=ontology",
+      "source": "skillhub",
+      "version": "0.1.2"
+    },
+    "proactive-agent": {
+      "name": "Proactive Agent",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=proactive-agent",
+      "source": "skillhub",
+      "version": "3.1.0"
+    },
+    "baidu-search": {
+      "name": "baidu web search",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=baidu-search",
+      "source": "skillhub",
+      "version": "1.1.0"
+    },
+    "skill-vetter": {
+      "name": "Skill Vetter",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=skill-vetter",
+      "source": "skillhub",
+      "version": "1.0.0"
+    },
+    "windows-control": {
+      "name": "Windows Control",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=windows-control",
+      "source": "skillhub",
+      "version": "1.0.0"
+    },
+    "memory-system-v2": {
+      "name": "Memory System V2",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=memory-system-v2",
+      "source": "skillhub",
+      "version": "1.0.0"
+    },
+    "windows-screenshot": {
+      "name": "Windows Screenshot",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=windows-screenshot",
+      "source": "skillhub",
+      "version": "1.0.3"
+    },
+    "memory-manager": {
+      "name": "Memory Manager",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=memory-manager",
+      "source": "skillhub",
+      "version": "1.0.0"
+    },
+    "memory-tiering": {
+      "name": "Memory Tiering",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=memory-tiering",
+      "source": "skillhub",
+      "version": "1.0.0"
+    },
+    "memory-hygiene": {
+      "name": "Memory Hygiene",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=memory-hygiene",
+      "source": "skillhub",
+      "version": "1.0.0"
+    },
+    "powershell-safe-chain": {
+      "name": "PowerShell Safe Chain",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=powershell-safe-chain",
+      "source": "skillhub",
+      "version": "1.0.0"
+    },
+    "powershell": {
+      "name": "PowerShell",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=powershell",
+      "source": "skillhub",
+      "version": "1.0.0"
+    },
+    "powershell-reliable": {
+      "name": "PowerShell Reliable Execution",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=powershell-reliable",
+      "source": "skillhub",
+      "version": "1.0.0"
+    },
+    "windows-ui-automation": {
+      "name": "Windows UI Automation",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=windows-ui-automation",
+      "source": "skillhub",
+      "version": "1.0.0"
+    },
+    "windows-tts-wsl2": {
+      "name": "Windows TTS (WSL2)",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=windows-tts-wsl2",
+      "source": "skillhub",
+      "version": "1.1.1"
+    },
+    "wechat-qq-sender": {
+      "name": "微信QQ自动发消息",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=wechat-qq-sender",
+      "source": "skillhub",
+      "version": "1.1.3"
+    },
+    "github": {
+      "name": "Github",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=github",
+      "source": "skillhub",
+      "version": "1.0.0"
+    },
+    "evolver": {
+      "name": "Evolver",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=evolver",
+      "source": "skillhub",
+      "version": "1.31.0"
+    },
+    "free-ride": {
+      "name": "Free Ride - Unlimited free AI",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=free-ride",
+      "source": "skillhub",
+      "version": "1.0.4"
+    },
+    "gog": {
+      "name": "Gog",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=gog",
+      "source": "skillhub",
+      "version": "1.0.0"
+    },
+    "multi-search-engine": {
+      "name": "Multi Search Engine",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=multi-search-engine",
+      "source": "skillhub",
+      "version": "2.0.1"
+    },
+    "agent-browser-clawdbot": {
+      "name": "Agent Browser",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=agent-browser-clawdbot",
+      "source": "skillhub",
+      "version": "0.1.0"
+    },
+    "agent-memory": {
+      "name": "Agent Memory",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=agent-memory",
+      "source": "skillhub",
+      "version": "1.0.0"
+    },
+    "codeconductor": {
+      "name": "codeconductor",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=codeconductor",
+      "source": "skillhub",
+      "version": ""
+    },
+    "word-docx": {
+      "name": "Word / DOCX",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=word-docx",
+      "source": "skillhub",
+      "version": "1.0.2"
+    },
+    "excel-xlsx": {
+      "name": "excel-xlsx",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=excel-xlsx",
+      "source": "skillhub",
+      "version": ""
+    },
+    "ppt-generator": {
+      "name": "description: 将用户讲稿一键生成乔布斯风极简科技感竖屏HTML演示稿。当用户需要生成PPT、演示文稿、Slides、幻灯片，或要求科技风/极简风/乔布斯风格的演示时触发此技能。输出为单个可直接运行的HTML文件。",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=ppt-generator",
+      "source": "skillhub",
+      "version": "1.0.0"
+    },
+    "image": {
+      "name": "Image",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=image",
+      "source": "skillhub",
+      "version": "1.0.4"
+    },
+    "system-controller": {
+      "name": "System Controller",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=system-controller",
+      "source": "skillhub",
+      "version": "1.0.1"
+    }
+  }
+}
