@@ -1,34 +1,29 @@
 # SESSION-STATE.md - 活跃工作内存
 
-_最后更新：2026-04-06 15:03_
+_最后更新：2026-04-06 15:24_
 
-## 核心状态
+## 精简完成
+删除了形式化复刻（magic_docs/team_memory/kairos/auto_dream/smooth_operator/ink-dashboard/Tengu命名）。只保留真正有用的。
+
+## 核心能力（精简后）
+- **记忆三层**: HOT/WARM/COLD + 事件驱动写入
 - **自主循环**: 每5分钟运行 (autonomous_loop.sh)
-- **Context**: 65% (>60%, working-buffer.md 已启用)
-- **Daniel授权**: root + Windows admin，技术操作直接执行
+- **Permission L0-L3**: 安全框架
+- **exec_guard**: SIGKILL保护 (55s)
+- **OpenClaw safeguard**: 内置context压缩（safeguard模式）
+- **context_guard**: 监控context>60%触发压缩
 
-## 子agent完成 (15:03)
-- claude-code-deep-research: 15m59s完成
-- MagicDocs + auto_extract重写 + ToolPipeline + exec_guard + Autocompact + TeamMemory + Permission L0-L3 + FeatureFlags 10→20
+## Cron任务（4个）
+- 自主循环: 每5min
+- 记忆守护: 每30min
+- 健康检查: 每1h
+- 晚间整理: 每天23:00
 
-## 6子系统状态
-| 子系统 | 状态 | 说明 |
-|---|---|---|
-| AutoMemory | ✅ ON | 三层HOT/WARM/COLD |
-| ExtractMemories | ✅ ON | auto_extract.js已重写, 2个artifacts |
-| SessionMemory | ✅ ON | SESSION-STATE.md |
-| AutoDream | ✅ ON | 每天23:00 |
-| MagicDocs | ✅ ON | scripts/magic_docs.sh, memory/artifacts/ |
-| TeamMemory | ✅ ON | scripts/team_memory.sh, .team_memory/ |
-
-## Cron任务（5个）
-- 墨瞳-自主循环: 每5min ✅
-- 墨瞳-记忆守护: 每30min ✅
-- 墨瞳-健康检查: 每1h ✅
-- 墨瞳-晚间整理+反思: 每天23:00 ✅
-- 墨瞳主动学习-源码研读: 每12h ✅
+## Feature Flags（简化，无混淆命名）
+- memory_extraction_enable
+- context_compact_enable
+- proactive_mode
+- permission_auto_mode
 
 ## 待处理
-- [ ] Tool Pipeline真正接入OpenClaw exec触发层
-- [ ] Bash验证器23个检查未实现
-- [ ] Context>60%: working-buffer启用中，每消息追加
+- Tool Pipeline真正接exec（待研究OpenClaw hook机制）

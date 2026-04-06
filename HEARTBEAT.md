@@ -28,12 +28,9 @@
 - [x] 每条消息后自主判断，写入当天 memory/YYYY-MM-DD.md（Daniel 指令）
 - [x] ExtractMemories：cron每30min自动提取（auto_extract_cron.sh）
 - [x] Autocompact：cron每小时检查context>60%自动压缩（autocompact.sh）
-- [x] AutoDream：cron每天23:30反思生成战略洞察（auto_dream.sh）
-- [ ] 运行 `detect.sh` 检查压缩风险（每1小时）
-- [ ] 若 >70%: 运行 `snapshot.sh` 保存快照
-- [ ] 若 >85%: 立即快照并告警
 - [ ] 每日 23:00: 运行 `organize.sh` 整理记忆
 - [x] 每日新日志：事件驱动（`remember.sh` 写时自动创建，不再用cron）
+- [x] OpenClaw safeguard：内置context压缩（自动，无需配置）
 
 ### 上下文监控
 - [ ] 检查 session_status 上下文使用量
