@@ -15,6 +15,12 @@ TODAY=$(date +%Y-%m-%d)
 MEMORY_FILE="$HOME/.openclaw/workspace/memory/$TODAY.md"
 DB="$HOME/.agent-memory/memory.db"
 
+# 不存在则创建（事件驱动，不需要cron）
+if [ ! -f "$MEMORY_FILE" ]; then
+    echo "# $TODAY 日记" > "$MEMORY_FILE"
+    echo "Created by remember.sh on demand" >> "$MEMORY_FILE"
+fi
+
 # 写入当天日记文件
 echo "- $CONTENT" >> "$MEMORY_FILE"
 
