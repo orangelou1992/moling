@@ -2,7 +2,8 @@
 
 **Logged**: 2026-04-05T06:18:00+08:00
 **Priority**: medium
-**Status**: pending
+**Status**: closed
+**Fix Applied**: 已记录正确判断方法：必须用 PowerShell Get-Process MainWindowTitle 检查，不能用视觉截图判断应用是否运行。本错误为知识性记录，无需代码修复。
 **Area**: perception
 
 ### Summary

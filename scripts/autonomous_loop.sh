@@ -23,7 +23,7 @@ scan_errors() {
 scan_context() {
     # context使用量
     local pct
-    pct=$(bash "$WORKSPACE/scripts/context_monitor.sh" raw 2>/dev/null | grep "USAGE_PCT" | grep -o '[0-9]*' | head -1)
+    pct=$(bash "$WORKSPACE/scripts/context_monitor.sh" usage 2>/dev/null | grep -o '[0-9]*' | head -1)
     [ -z "$pct" ] && pct=0
     echo "$pct"
 }

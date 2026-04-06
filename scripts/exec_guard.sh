@@ -1,13 +1,23 @@
 #!/bin/bash
-# exec_guard.sh - Exec 保护机制
-# 防止长时运行被 SIGKILL，核心问题：OpenClaw 对 exec 有 60s SIGKILL 限制
-# 解决：短时分片 + 子进程隔离 + 进度checkpoint
-
+# exec_guard.sh - Exec 保护 + Tool Pipeline 集成
+#
+# 双重职责：
+# 1. 防止长时运行被 SIGKILL（OpenClaw对exec有60s限制）
+# 2. 将exec通过Tool Pipeline执行（L1权限检查 + L4结果提取）
+#
 # 用法: exec_guard.sh <timeout> <command> [args...]
-# timeout: 最大秒数 (默认 55s，留 5s buffer)
-# 返回: command 退出码，或 137 (SIGKILL) 或 143 (SIGTERM)
+#   timeout: 最大秒数 (默认 50s，留10s buffer)
+#   command: 要执行的命令
+#
+# 环境变量:
+#   USE_PIPELINE=1  - 强制通过tool_pipeline执行（默认1）
+#   SKIP_PIPELINE=1 - 跳过pipeline，直接执行
+#   PIPELINE_LOG=   - 自定义pipeline日志路径
 
-MAX_TIMEOUT="${1:-55}"; shift
+set -e
+
+MAX_TIMEOUT="${1:-50}"
+shift
 CMD="$*"
 
 if [ -z "$CMD" ]; then
@@ -15,38 +25,20 @@ if [ -z "$CMD" ]; then
     exit 1
 fi
 
-# 进度checkpoint文件（防止同命令重复运行）
-CHECKPOINT="/tmp/exec_guard_$(echo "$CMD" | md5sum | cut -c1-8).chk"
-PID_FILE="/tmp/exec_guard_$(echo "$CMD" | md5sum | cut -c1-8).pid"
+PIPELINE_DIR="$HOME/.openclaw/workspace/scripts"
+PIPELINE_LOG="${PIPELINE_LOG:-/tmp/tool_pipeline_exec_$$.log}"
+USE_PIPELINE="${USE_PIPELINE:-1}"
 
-# 如果checkpoint存在且进程还在跑，跳过
-if [ -f "$PID_FILE" ]; then
-    OLD_PID=$(cat "$PID_FILE" 2>/dev/null)
-    if [ -n "$OLD_PID" ] && kill -0 "$OLD_PID" 2>/dev/null; then
-        echo "WARN: same command already running (PID $OLD_PID), skipping" >&2
-        exit 1
-    fi
-    rm -f "$CHECKPOINT" "$PID_FILE"
+# 如果不是exec命令，直接执行
+if [ "$USE_PIPELINE" != "1" ]; then
+    timeout "$MAX_TIMEOUT" bash -c "$CMD"
+    exit $?
 fi
 
-# 启动子进程，记录 PID
-(
-    exec timeout --signal=KILL "$MAX_TIMEOUT" bash -c "$CMD"
-) &
-CHILD_PID=$!
-echo $CHILD_PID > "$PID_FILE"
+# 通过Tool Pipeline执行
+# L1权限检查 + L2 context检查 + L3执行 + L4 auto_extract + L5日志
+export TOOL_PIPELINE_LOG="$PIPELINE_LOG"
+export TIMEOUT="$MAX_TIMEOUT"
 
-# 等待，带超时保护
-wait $CHILD_PID 2>/dev/null
-EXIT_CODE=$?
-
-# 清理
-rm -f "$PID_FILE"
-
-if [ $EXIT_CODE -eq 137 ]; then
-    echo "WARN: exec_guard SIGKILL (timeout=${MAX_TIMEOUT}s, cmd truncated)" >&2
-elif [ $EXIT_CODE -eq 143 ]; then
-    echo "WARN: exec_guard SIGTERM (timeout=${MAX_TIMEOUT}s)" >&2
-fi
-
-exit $EXIT_CODE
+bash "$PIPELINE_DIR/tool_pipeline.sh" exec "$MAX_TIMEOUT" "$CMD"
+exit $?
